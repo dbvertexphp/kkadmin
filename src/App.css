@@ -1,0 +1,51 @@
+/* For mobile view when sidebar is collapsed */
+
+
+.main-content {
+  transition: margin-left 0.3s ease-in-out; /* Smooth content shift */
+}
+
+@media (max-width: 767px) {
+  .main-content {
+    margin-left: 0 !important; /* Remove left margin when sidebar is collapsed */
+  }
+
+  /* Optional: Add padding for better spacing on small screens */
+  .main-content {
+    padding-left: 15px !important;
+  }
+}
+
+
+
+
+
+/* For Small Screens: 1 column */
+@media (max-width: 768px) {
+  .inquiries-container {
+    grid-template-columns: 1fr !important;
+  }
+	.main-inquirycontent{
+		width: 100%;
+		margin-left: 0px !important;
+		text-align: center;
+	}
+
+}
+
+/* For Medium Screens: 2 columns */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .inquiries-container {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+}
+
+/* For Large Screens: 3 columns */
+@media (min-width: 1025px) {
+  .inquiries-container {
+    grid-template-columns: repeat(3, 1fr) !important;
+  }
+}
+
+
+
