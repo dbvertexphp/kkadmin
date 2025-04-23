@@ -2,10 +2,12 @@ import { useState, useEffect } from "react";
 import Sidebar from "./Sidebar";
 import Logout from "./Logout";
 import ChangePasswordModal from "./ChangePasswordModal";
+import ContactForm from "./ContactForm";
 
 const SettingsPage = () => {
   const [isSidebarOpen, setSidebarOpen] = useState(false);
-	const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
   useEffect(() => {
     // Update the sidebar state based on the window width
     const handleResize = () => {
@@ -53,6 +55,11 @@ const SettingsPage = () => {
             isOpen={isModalOpen}
             onClose={() => setIsModalOpen(false)}
           />
+          {/* Contact Form */}
+          <div className="mt-4">
+            <h2 className="text-2xl font-bold mb-4">Update Contact Details</h2>
+            <ContactForm />
+          </div>
         </div>
       </div>
     </div>

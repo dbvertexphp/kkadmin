@@ -10,6 +10,8 @@ import './App.css';
 import HeroImage from './components/HeroImage';
 import BackgroundImage from './components/BackgroundImage';
 import ProjectImage from './components/ProjectImage';
+import BannerImage from './components/BannerImage';
+import GalleryImage from './components/GalleryImage';
 function App() {
   return (
     <Router>
@@ -23,7 +25,9 @@ function App() {
         <Route path="/settings" element={<PrivateRoute element={<SettingsPage />} />} />
 				<Route path="/uplodHeroImg" element={<PrivateRoute element={<HeroImage />} />} />
 				<Route path="/uploadBackgroundImg" element={<PrivateRoute element={<BackgroundImage />} />} />
-				<Route path="/uploadProjectImg" element={<PrivateRoute element={<ProjectImage />} />} />
+				<Route path="/uploadProductImg" element={<PrivateRoute element={<ProjectImage />} />} />
+				<Route path="/uploadBannerImg" element={<PrivateRoute element={<BannerImage />} />} />
+				<Route path="/uploadGalleryImg" element={<PrivateRoute element={<GalleryImage />} />} />
       </Routes>
     </Router>
   );

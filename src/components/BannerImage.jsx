@@ -5,7 +5,7 @@ import Swal from "sweetalert2";
 
 const BASE_URL = import.meta.env.VITE_BASE_URL;
 
-const ProjectImage = () => {
+const BannerImage = () => {
   const [isSidebarOpen, setSidebarOpen] = useState(false);
   const [images, setImages] = useState([]);
   const [selectedFile, setSelectedFile] = useState(null);
@@ -16,10 +16,10 @@ const ProjectImage = () => {
   });
   const [updatingImageId, setUpdatingImageId] = useState(null);
   const [expandedDescriptions, setExpandedDescriptions] = useState({});
-	const fileInputRef = useRef();
+  const fileInputRef = useRef();
   const fetchProjectImages = async () => {
     try {
-      const response = await axios.get(`${BASE_URL}/api/get/project`);
+      const response = await axios.get(`${BASE_URL}/api/get/banner`);
       setImages(response.data.images);
     } catch (error) {
       console.error("Error fetching images:", error);
@@ -62,13 +62,13 @@ const ProjectImage = () => {
     form.append("description", formData.description);
 
     try {
-      await axios.post(`${BASE_URL}/api/upload/project`, form);
+      await axios.post(`${BASE_URL}/api/upload/banner`, form);
       Swal.fire("Image uploaded successfully!", "", "success");
       setFormData({ title: "", subtitle: "", description: "" });
       setSelectedFile(null);
-			if (fileInputRef.current) {
-				fileInputRef.current.value = "";
-				}
+	  if (fileInputRef.current) {
+		fileInputRef.current.value = "";
+	  }
       fetchProjectImages();
     } catch (error) {
       console.error("Upload error:", error);
@@ -95,16 +95,16 @@ const ProjectImage = () => {
 
     try {
       await axios.put(
-        `${BASE_URL}/api/update/project/${updatingImageId}`,
+        `${BASE_URL}/api/update/banner/${updatingImageId}`,
         form
       );
       Swal.fire("Image updated successfully!", "", "success");
       setUpdatingImageId(null);
       setSelectedFile(null);
       setFormData({ title: "", subtitle: "", description: "" });
-			if (fileInputRef.current) {
-				fileInputRef.current.value = "";
-				}
+	  if (fileInputRef.current) {
+		fileInputRef.current.value = "";
+	  }
       fetchProjectImages();
     } catch (error) {
       console.error("Update error:", error);
@@ -122,7 +122,7 @@ const ProjectImage = () => {
     }).then(async (result) => {
       if (result.isConfirmed) {
         try {
-          await axios.delete(`${BASE_URL}/api/deleteProjectImage/${id}`);
+          await axios.delete(`${BASE_URL}/api/deleteBannerImage/${id}`);
           Swal.fire("Deleted!", "Image has been deleted.", "success");
           fetchProjectImages();
         } catch (error) {
@@ -162,14 +162,14 @@ const ProjectImage = () => {
           transition: "margin-left 0.3s ease",
         }}
       >
-        <h2 className="mb-4 text-center text-md-start">Product Images</h2>
+        <h2 className="mb-4 text-center text-md-start">Banner Images</h2>
 
         {/* Upload / Update Form */}
         <div className="mb-4">
           <p style={{ fontWeight: "500" }}>
             {updatingImageId
-              ? "Update Product Image"
-              : "Upload New Product Image"}
+              ? "Update Banner Image"
+              : "Upload New Banner Image"}
           </p>
           <input
             type="text"
@@ -199,7 +199,7 @@ const ProjectImage = () => {
             type="file"
             className="form-control mb-2"
             onChange={handleFileChange}
-						ref={fileInputRef}
+			ref={fileInputRef}
           />
 
           {updatingImageId ? (
@@ -292,4 +292,4 @@ const ProjectImage = () => {
   );
 };
 
-export default ProjectImage;
+export default BannerImage;
